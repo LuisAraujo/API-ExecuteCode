@@ -1,0 +1,9 @@
+AAA/code.c: In function 'main':
+AAA/code.c:2:20: warning: character constant too long for its type
+ int main(){ printf('teste');}
+                    ^
+AAA/code.c:2:20: warning: passing argument 1 of 'printf' makes pointer from integer without a cast
+In file included from AAA/code.c:1:0:
+C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include/stdio.h:378:15: note: expected 'const char * __restrict__' but argument is of type 'int'
+   int __cdecl printf(const char * __restrict__ _Format,...);
+               ^

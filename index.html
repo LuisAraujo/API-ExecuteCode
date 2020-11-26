@@ -1,0 +1,25 @@
+<html>
+<body>
+<script src="js/jquery-3.4.1.min.js"> </script>
+<script>
+
+	$.ajax({
+        url: "api.php",
+        type: 'POST',
+        data: {code: "#include<stdio.h>\nint main(){ printf('teste');}"},
+        //data: {code: "teste"},
+        success: function(data) {
+			
+			var json = JSON.parse(data);
+			console.log(json);
+			
+        },
+		
+		error: function(data){
+			console.log(data);
+		}
+        
+    });
+</script>
+</body>
+</html>
