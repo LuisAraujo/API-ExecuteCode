@@ -1,6 +1,0 @@
-0lQSPhEvnV/code.c: In function 'main':
-0lQSPhEvnV/code.c:2:19: warning: character constant too long for its type
- int main(){ print('teste');}
-                   ^
-C:\Users\hiper\AppData\Local\Temp\ccPh40Dn.o:code.c:(.text+0x13): undefined reference to `print'
-collect2.exe: error: ld returned 1 exit status

@@ -1,39 +1,28 @@
 <?php
 
-function generateRandomString($length = 10) { 
-	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-	
-	$charactersLength = strlen($characters); 
+include "geraterandompath.php";
 
-	$randomString = '';
-
-	for ($i = 0; $i < $length; $i++) { 
-		$randomString .= $characters[rand(0, $charactersLength - 1)];
-	} 
-
-	return $randomString;
-}
-
+//get a valid path
 do{
 	$token = "files_exec/".generateRandomString();
 
 }while( is_dir($token) );
 
-
-//$_POST["idtoken"];
+//code sended
 $code = $_POST['code'];
+//lang of code
 $lang = isset($_POST['lang'])?$_POST['lang']:"c";
 
-//Creating folder
+//creating folders
 $uritoken= $token."/";
 
-
-
+//has dir?
 if( !mkdir($uritoken) ){
 	echo '{"status": "file-error"}';
 	return;
 }
 
+/*Language supported: c and python*/
 if($lang == "c"){
 	
 	$namefile =$uritoken."code.c";
@@ -51,19 +40,17 @@ if($lang == "c"){
 	$cmd = "python ".$namefile;
 }
 
+//executing code
 exec($cmd, $result, $error);
 
-if($error){
-	
+//has a error?
+if($error){	
 	echo '{"status": "error"}';
-	//return;
 }else{
-	
 	echo '{"status": "noerror"}';
-	//return;
 }
 
-sleep(1);
+//delete all file gerate
 
 if( file_exists($uritoken."output") )
 	unlink($uritoken."output");
